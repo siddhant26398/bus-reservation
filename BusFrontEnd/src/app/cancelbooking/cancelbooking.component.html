@@ -1,0 +1,52 @@
+<html>
+  <!-- <h3 style=" margin-top: 50">Cancel Booking</h3> -->
+  <!-- <hr style="border: 1px solid black; margin-left: 660px" /> -->
+  <body style="background: transparent">
+    <h3 style="margin-top: 50; text-align: center; color: black">
+      Cancel Booking
+    </h3>
+    <div class="bookingid container" style="margin-left: 650">
+      <div class="signsection">
+        <label for="bookingId"><b>Enter your Booking ID :</b></label>
+        <form>
+          <input
+            type="text"
+            name="booking id"
+            placeholder="BOOKING ID"
+            [(ngModel)]="bookingId"
+            required
+          /><br /><br />
+          <button class="btn btn-info" (click)="search1()">search</button>
+        </form>
+      </div>
+      <div class="container">
+        <table>
+          <thead>
+            <th style="color: white; text-align: left">Passenger ID</th>
+            <th style="color: white">Passenger Name</th>
+            <th style="color: white">Passenger Age</th>
+            <th style="color: white">Passenger Gender</th>
+            <th style="color: white">Booking ID</th>
+            <th style="color: white">Passenger ID</th>
+            <th style="color: white">Seat ID</th>
+            <th style="color: white; text-align: center">Action</th>
+          </thead>
+          <tr>
+            <td style="color: white">{{ passenger.passengerId }}</td>
+            <td style="color: white">{{ passenger.passengerName }}</td>
+            <td style="color: white">{{ passenger.passAge }}</td>
+            <td style="color: white">{{ passenger.gender }}</td>
+            <td style="color: white">{{ passenger.bookingId }}</td>
+            <td style="color: white">{{ passenger.busId }}</td>
+            <td style="color: white">{{ passenger.seatId }}</td>
+            <button class="btn btn-info" (click)="delete()">
+              Cancel Booking
+            </button>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div *ngIf="deleted">Cancellation Confirmed</div>
+    <h3 style="text-align: center; margin-bottom: 200px; margin-top: 50">.</h3>
+  </body>
+</html>

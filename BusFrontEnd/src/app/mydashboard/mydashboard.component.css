@@ -1,0 +1,19 @@
+.dashboard-menu {
+  list-style-type: none;
+}
+.dashboard-menu li {
+  text-decoration-style: none;
+  float: left;
+  padding: 2%;
+}
+li {
+  color: black;
+}
+a {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 10px;
+  background-color: white;
+}

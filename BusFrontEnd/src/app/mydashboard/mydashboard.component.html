@@ -1,0 +1,35 @@
+<h2 class="text-center">MY DASHBOARD</h2>
+<!-- {{userDetails.userId}} -->
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <h3 style="text-align: center">Welcome {{ userDetails.firstName }}!</h3>
+        <ul class="nav nav-tabs">
+          <li role="presentation" routerLinkActive="active">
+            <a routerLink="/myBookings">My Bookings</a>
+          </li>
+          <li role="presentation" routerLinkActive="active">
+            <a routerLink="/profile">Profile</a>
+          </li>
+          <li role="presentation" routerLinkActive="active">
+            <a routerLink="/changepassword">Change Password</a>
+          </li>
+          <li role="presentation" routerLinkActive="active">
+            <a routerLink="/myWallet">My Wallet</a>
+          </li>
+          <li><a routerLink="../signout">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-5" nav nav-tabs>
+      <div
+        class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2"
+        style="margin-bottom: 100px"
+      >
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

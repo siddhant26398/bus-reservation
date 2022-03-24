@@ -1,0 +1,92 @@
+#header {
+  text-align: center;
+  border: solid gray 10px;
+  color: lightgray;
+  background-color: black;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #c0c0c0;
+}
+
+.topnav {
+  /* background: white; */
+  /* background: linear-gradient(90deg, rgba(4,4,140,1) 0%, rgba(68,60,156,1) 47%, rgba(231,132,11,1) 100%); */
+  overflow: hidden;
+  margin-bottom: 0px;
+  /* display: flex;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 30px; */
+  flex: 1;
+  text-align: right;
+  overflow: hidden;
+  margin-top: 10px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  /* border-radius: 5px; */
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  display: inline-block;
+  list-style: none;
+}
+
+.topnav ul li {
+  display: inline-block;
+  margin-right: 70px;
+}
+.topnav ul a {
+  position: relative;
+  float: left;
+  padding: 30px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+}
+
+ul {
+  list-style-type: none;
+}
+li {
+  float: left;
+  padding-right: 10px;
+}
+#main {
+  border: gray solid 10px;
+  align-content: center;
+}
+
+#main {
+  /*background-image:"assets/brs.JPG"; */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: fixed;
+  /* height: 500px;
+    width: 1500px; */
+}
+
+.header img {
+  float: right !important;
+  padding-right: 60px;
+  height: 100px;
+  padding: 15px 310px;
+}
+
+.logo-img {
+  float: right;
+  position: relative;
+}
+
+#id h1 {
+  font-family: Helvetica, Verdana, sans-serif;
+}
+.body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}

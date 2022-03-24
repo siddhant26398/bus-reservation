@@ -1,0 +1,282 @@
+<h3 style="margin-top: 20px; margin-bottom: 20px; text-align: center">
+  Bus Booking
+</h3>
+<div class="container">
+  <div class="row">
+    <div *ngIf="!showTicket">
+      <div class="abc"></div>
+      <form>
+        <br />
+        <label for="Routes">Select Route </label
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <select
+          class="form-select"
+          style="background-color: white; color: black"
+          name="routes"
+          id="routes"
+          [(ngModel)]="routeId"
+        >
+          <optgroup label="" *ngFor="let r of routes">
+            <option [value]="r.routeid" style="color: black">
+              {{ r.source }} to {{ r.destination }}
+            </option>
+          </optgroup>
+        </select>
+      </form>
+
+      <br />
+      <b>Select Travelling Date</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <input
+        type="date"
+        style="color: black"
+        [(ngModel)]="date1"
+        [(ngModel)]="bo.dateOfTravek"
+      />
+
+      <br />
+      <button
+        class="btn btn-success"
+        (click)="searchForBus()"
+        (click)="(!isPaymentDone)"
+      >
+        search
+      </button>
+
+      <br />
+      <!-- <hr style="border: solid silver" /> -->
+      <div>
+        <table
+          border="1"
+          class="table table-striped table-hover"
+          style="
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: black;
+            padding: 5px;
+            text-align: center;
+            font-size: medium;
+          "
+        >
+          <thead style="color: white">
+            <th>Bus ID</th>
+            <th>Bus Name</th>
+            <th>Departure time</th>
+            <th>Arrival Time</th>
+            <th>Bus Type</th>
+            <th>Fare</th>
+            <th>Choose Bus</th>
+          </thead>
+          <tr
+            *ngFor="let b of bus"
+            class="tablehover"
+            style="margin-top: 20px; background-color: aliceblue; color: black"
+          >
+            <td>{{ b.busid }}</td>
+            <td>{{ b.busname }}</td>
+            <td>{{ b.departuretime }}</td>
+            <td>{{ b.arrivaltime }}</td>
+            <td>{{ b.bustype }}</td>
+            <td>{{ b.fare }}</td>
+            <td>
+              <input
+                type="radio"
+                class="form-check-input"
+                value="{{ b.busid }}"
+                [(ngModel)]="busidforseats"
+                [(ngModel)]="pass.busId"
+                [(ngModel)]="bo.busId"
+              />
+            </td>
+          </tr>
+        </table>
+        <br />
+
+        <button class="btn btn-success" (click)="searchforSeats()">
+          search
+        </button>
+
+        <br />
+        <!-- <hr style="border: solid silver" /> -->
+        <div *ngIf="showOtherFunctions">
+          <table
+            class="table table-striped table-hover"
+            style="width: 70%; margin-left: auto; margin-right: auto"
+          >
+            <thead style="color: white">
+              <th>Seat ID</th>
+              <th>Bus Id</th>
+              <th>Choose Seat</th>
+            </thead>
+            <tr *ngFor="let s of seats" class="tablehover" style="color: white">
+              <td>{{ s.seatId }}</td>
+              <td>{{ s.busId }}</td>
+              <td>
+                <input
+                  type="radio"
+                  value="{{ s.seatId }}"
+                  [disabled]="s.availability == 0"
+                  [(ngModel)]="seatIdForPassenger"
+                  [(ngModel)]="pass.seatId"
+                />
+              </td>
+            </tr>
+          </table>
+          <hr />
+
+          <div>
+            <form #myForm="ngForm" (ngSubmit)="saveBookingData()">
+              <table
+                class="table table-striped table-hover"
+                style="width: 70%; margin-left: auto; margin-right: auto"
+              >
+                <tr>
+                  <td>
+                    <label for="passengerName" style="color: white"
+                      >Passenger Name</label
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="passengerName"
+                      [(ngModel)]="pass.passengerName"
+                      required
+                    />
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td>
+                    <label for="passAge" style="color: white"
+                      >Passenger Age</label
+                    >
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="passAge"
+                      [(ngModel)]="pass.passAge"
+                      required
+                    />
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td>
+                    <label for="gender" style="color: white">Gender</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="passGender"
+                      [(ngModel)]="pass.gender"
+                      required
+                    />
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td>
+                    <label for="emailId" style="color: white">Email ID</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="emailId"
+                      [(ngModel)]="bo.emailId"
+                      required
+                    />
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td>
+                    <label for="phoneNo" style="color: white">Phone No</label>
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="emailId"
+                      [(ngModel)]="bo.phoneNo"
+                      required
+                    />
+                  </td>
+                </tr>
+                <br />
+                <tr>
+                  <td></td>
+                  <td>
+                    <input
+                      class="btn btn-success"
+                      type="submit"
+                      value="Save Passenger"
+                      [disabled]="!myForm.valid"
+                    />
+                  </td>
+                </tr>
+              </table>
+            </form>
+          </div>
+          <hr />
+
+          <br />
+
+          <div *ngIf="bookingIdCreated">
+            <div *ngIf="walletBalance != null">
+              <div>
+                <strong style="color: white"
+                  >Your Wallet Balance Linked with {{ bo.emailId }} is Rs
+                  {{ walletBalance }} /-</strong
+                >
+              </div>
+              <br />
+              <strong style="color: white"> Select Payment Method </strong>
+              <ul>
+                <select
+                  name="Payment Method"
+                  id="Payment Method"
+                  [(ngModel)]="PaymentOption"
+                >
+                  <optgroup label="Payement">
+                    <option value="CreditCard" style="color: black">
+                      Credit/Debit Card
+                    </option>
+                  </optgroup>
+                </select>
+              </ul>
+              <button
+                class="btn btn-success"
+                (click)="savepassenger()"
+                (click)="(!isPaymentDone)"
+              >
+                Pay And Proceed
+              </button>
+            </div>
+          </div>
+
+          <div *ngIf="isPaymentDone">
+            <h4 style="color: white">Booking Success</h4>
+            <button class="btn btn-success" (click)="viewTicket()">
+              View Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showTicket" id="print-section">
+      <h1>Ticket Booking {{ isitSuccessfull }}</h1>
+      For Booking ID -{{ bo.bookingId }} <br />
+      Passenger Name -{{ pass.passengerName }} <br />
+      Date Of Departure -{{ bo.dateOfTravek }} <br />
+      Seat Id -{{ pass.seatId }}<br />
+      BusId - {{ busidforseats }}<br />
+      Departure Time -{{ selectedBus.departuretime }} <br />
+      Arrival Time -{{ selectedBus.arrivaltime }} <br />
+    </div>
+    <li routerLinkActive="active"><a routerLink="/">Go Back</a></li>
+  </div>
+</div>

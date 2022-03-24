@@ -1,0 +1,6 @@
+body {
+  background-image: url("src/assets/bus1.jpg");
+}
+::placeholder {
+  color: black;
+}
